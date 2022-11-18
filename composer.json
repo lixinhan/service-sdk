@@ -1,0 +1,19 @@
+{
+    "name": "lixinhan/service-sdk",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lixinhan\\ServiceSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lixinhan",
+            "email": "lixinhan@lixinhan.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "*"
+    }
+}
