@@ -3,6 +3,7 @@
 namespace Lixinhan\ServiceSdk\Sdk\Wechat;
 
 use Lixinhan\ServiceSdk\Dto\Wechat\Request\MiniprogramGetUnlimitedQRCodeRequestDto;
+use Lixinhan\ServiceSdk\Dto\Wechat\Response\MiniprogramAnalysisSceneResponseDto;
 use Lixinhan\ServiceSdk\Dto\Wechat\Response\MiniprogramGetPhoneNumberByEncryptedDataRequestDto;
 use Lixinhan\ServiceSdk\Dto\Wechat\Response\MiniprogramGetPhoneNumberResponseDto;
 use Lixinhan\ServiceSdk\Dto\Wechat\Response\MiniprogramGetUnlimitedQRCodeResponseDto;
@@ -53,6 +54,16 @@ class WechatSdk extends BaseSdk
 
     }
 
+    public function miniprogramAnalysisScene($miniprogramSceneId):MiniprogramAnalysisSceneResponseDto{
+        $params['miniprogram_scene_id']=$miniprogramSceneId;
+        $params=array_merge($params,$this->baseParams());
+        $params['sign']=$this->makeSign($params);
+        $responseDataArray=$this->httpClient('get','miniprogram/analysisScene?'.http_build_query($params));
+        $responseDto=new MiniprogramAnalysisSceneResponseDto();
+        $this->copy($responseDataArray,$responseDto);
+        return $responseDto;
+
+    }
 
 
 }
